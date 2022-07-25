@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 th:text="${message}"></h1>
+
+<!--
+<div th:if="${sts.empty}">No dio</div>
+<div th:each="st : ${sts}">
+    <div th:text="${st}"></div>
+</div>
+-->
+<label>name:</label>
+<div th:text="${name}"></div>
+<label>followersnumber</label>
+<div th:text="${followersnumber}"></div>
+<label>followingnumber</label>
+<div th:text="${followingnumber}"></div>
+<label>blognumber</label>
+<div th:text="${blognumber}"></div>
+
+<!--
+<div th:each="blogimg : ${blogimgs}" >
+    <a href="/blog">
+        <img th:src="*{'data:image/jpeg;base64,'+blogimg}" alt=""/>
+    </a>
+</div>
+-->
+
+<div th:each="blogtymeleaf : ${blogtymeleafs}">
+    <a th:href="@{'/blog/'(id = ${blogtymeleaf.id})}">
+        <img th:src="*{'data:image/jpeg;base64,'+blogtymeleaf.img}" alt=""/>
+    </a>
+</div>
+
+
+<form action="addBlog/{id}" method="get">
+    <button>Create New Blog</button>
+</form>
+</body>
+</html>
